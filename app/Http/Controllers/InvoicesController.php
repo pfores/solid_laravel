@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoices;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -22,7 +23,7 @@ class InvoicesController extends Controller
 
         $invoices = $this->transform($database_invoices);
 
-        return view('invoices',compact('invoices');
+        return view('invoices',compact('invoices'));
 
 //        $data['invoices'] = $formatted_invoices;
 //        return view('invoices',$data);
@@ -31,10 +32,11 @@ class InvoicesController extends Controller
 
     private function getAllInvoicesFromDatabase()
     {
-        return ;
+        return Invoices::all();
     }
 
     private function transform($database_invoices)
     {
+        return $database_invoices;
     }
 }
