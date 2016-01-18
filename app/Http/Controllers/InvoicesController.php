@@ -19,7 +19,9 @@ class InvoicesController extends Controller
             return "Forbidden!";
         }
 
-        $database_invoices = $this->getAllInvoicesFromDatabase();
+        $invoiceRepo = new InvoiceRepository();
+
+        $database_invoices = $invoiceRepo->getAllInvoicesFromDatabase();
 
         $invoices = $this->transform($database_invoices);
 
@@ -28,11 +30,6 @@ class InvoicesController extends Controller
 //        $data['invoices'] = $formatted_invoices;
 //        return view('invoices',$data);
 
-    }
-
-    private function getAllInvoicesFromDatabase()
-    {
-        return Invoices::all();
     }
 
     private function transform($database_invoices)
