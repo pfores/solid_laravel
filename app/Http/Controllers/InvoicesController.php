@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Invoices;
+use App\Repositories\InvoiceRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,6 +13,17 @@ use Illuminate\Support\Facades\Auth;
 class InvoicesController extends Controller
 {
     //
+    protected $invoiceRepo;
+
+    /**
+     * InvoicesController constructor.
+     * @param $invoiceRepo
+     */
+    public function __construct(InvoiceRepository $invoiceRepo)
+    {
+        $this->invoiceRepo = $invoiceRepo;
+    }
+
     public function index()
     {
 
@@ -19,11 +31,8 @@ class InvoicesController extends Controller
             return "Forbidden!";
         }
 
-        $invoiceRepo = new InvoiceRepository();
-
-        $database_invoices = $invoiceRepo->getAllInvoicesFromDatabase();
-
-        $invoices = $this->transform($database_invoices);
+        $invoices = $this->transform
+        $this->invoiceRepo->all();
 
         return view('invoices',compact('invoices'));
 

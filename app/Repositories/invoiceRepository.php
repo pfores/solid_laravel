@@ -7,11 +7,8 @@ use App\Invoices;
  * Date: 18/01/16
  * Time: 18:01
  */
-class InvoiceRepository
+class InvoiceRepository implements RepositoryInterface
 {
-    public function getAllInvoicesFromDatabase()
-    {
-        return Invoices::all();
-    }
 
 }
+
