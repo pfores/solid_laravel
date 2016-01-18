@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
-    Route::get('/Invoice', 'InvoiceController@index');
+    Route::get('/invoices', 'InvoicesController@index');
 
 });
 
